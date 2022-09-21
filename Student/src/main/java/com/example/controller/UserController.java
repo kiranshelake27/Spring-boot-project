@@ -1,6 +1,6 @@
 package com.example.controller;
 
-//import javax.servlet.http.HttpSession;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,14 +20,17 @@ public class UserController {
 	public String home() {
 		return "index";
 	}
+   
+  
 	
 	@PostMapping("/usersubmit")
-	public String submit(@ModelAttribute UserDetails user)
+	public String submit(@ModelAttribute UserDetails user,HttpSession session)
 	
 	{
 		System.out.println(user);
 		repo.save(user);
-		//session.setAttribute("message", "done successfully");
-		return "success";
+		session.setAttribute("message", "done successfully");
+		return   "redirect:/";
 	}
+	 
 }
