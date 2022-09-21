@@ -1,0 +1,25 @@
+package com.example.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import com.example.entity.UserDetails;
+
+@Controller
+public class UserController {
+   @GetMapping("/")
+	public String home() {
+		return "index";
+	}
+	
+	@PostMapping("/")
+	public String submit(@ModelAttribute UserDetails u)
+	
+	{
+		System.out.println(u);
+		
+		return "redirect:/";
+	}
+}
